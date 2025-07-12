@@ -23,6 +23,9 @@ class _SettingsDialogState extends State<SettingsDialog> {
 
   late TextEditingController pinController;
 
+  // TODO disable settings button, when pop up is open....
+  // Bug: multiple panels can be open above each other - NOT GOOD
+
   @override
   void initState() {
     super.initState();

@@ -29,7 +29,7 @@ class _JournalEntryState extends State<JournalEntryCard> {
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: NCard(
-          width: 347.0,
+          width: 367.0,
           height: 75.0,
           borderRadius: 20.0,
           border: BoxBorder.all(color: Theme.of(context).focusColor),

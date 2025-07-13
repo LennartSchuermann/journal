@@ -49,28 +49,31 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO search bar
     return SizedBox(
       width: MediaQuery.sizeOf(context).width / 3 - kWindowRadius,
-      child: NScrollFade(
-        begin: Alignment.bottomCenter,
-        end: Alignment.topCenter,
-        child: ListView(
-          children: [
-            for (int i = 0; i < entries.length; i++)
-              JournalEntryCard(
-                    journalEntry: entries[i],
-                    selected: isEntrySelected(entries[i]),
-                    onTap: () => setState(() => selectEntry(entries[i])),
-                  )
-                  .animate()
-                  .fadeIn(
-                    delay: Duration(milliseconds: 100 * i),
-                    curve: Curves.fastEaseInToSlowEaseOut,
-                  )
-                  .slideX(
-                    delay: Duration(milliseconds: 100 * i),
-                    curve: Curves.decelerate,
-                  ),
-            const SizedBox(height: kDefaultPadding),
-          ],
+      child: Padding(
+        padding: const EdgeInsets.only(right: kDefaultPadding),
+        child: NScrollFade(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          child: ListView(
+            children: [
+              for (int i = 0; i < entries.length; i++)
+                JournalEntryCard(
+                      journalEntry: entries[i],
+                      selected: isEntrySelected(entries[i]),
+                      onTap: () => setState(() => selectEntry(entries[i])),
+                    )
+                    .animate()
+                    .fadeIn(
+                      delay: Duration(milliseconds: 100 * i),
+                      curve: Curves.fastEaseInToSlowEaseOut,
+                    )
+                    .slideX(
+                      delay: Duration(milliseconds: 100 * i),
+                      curve: Curves.decelerate,
+                    ),
+              const SizedBox(height: kDefaultPadding),
+            ],
+          ),
         ),
       ),
     );

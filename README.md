@@ -8,6 +8,11 @@ by Lennart S. @ Nucleon Interactive
 
 screnshots...
 
+### Features
+- *optional* Journal Encryption
+- Markdown Syntax (also Math)
+- 
+
 ## How to use
 
 download bin in releases...

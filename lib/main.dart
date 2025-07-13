@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-
 import 'package:flutter_acrylic/flutter_acrylic.dart';
-import 'package:journal/core/core.dart';
-import 'package:journal/core/core_manager.dart';
-import 'package:journal/test/test_data.dart';
-
 import 'package:window_manager/window_manager.dart';
 
 import 'package:nucleon/nucleon.dart';
 
 import 'package:journal/data.dart';
+import 'package:journal/core/core.dart';
+import 'package:journal/test/test_data.dart';
+import 'package:journal/core/core_manager.dart';
 import 'package:journal/screens/login_screen.dart';
 import 'package:journal/widgets/utils/custom_window_caption.dart';
 

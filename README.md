@@ -6,12 +6,14 @@ by Lennart S. @ Nucleon Interactive
 
 ## Journal
 
-screnshots...
+Dark Mode           |  Light Mode
+:-------------------------:|:-------------------------:
+![](git/home_D.png)  |  ![](git/home_D.png)
 
-### Features
-- *optional* Journal Encryption
+### Other Features
+- *optional* Data Encryption
 - Markdown Syntax (also Math)
-- 
+- Dark & Light Mode
 
 ## How to use
 

@@ -205,8 +205,10 @@ class _JournalEntryContentPageState extends State<JournalEntryContentPage> {
                       richTextBuilder: (span) => Text.rich(span),
                     ),
                     config: MarkdownConfig(
+                      // TODO fix todo lists... padding??? & create config
                       configs: [
                         TableConfig(), // TODO Table Config ?
+                        ListConfig(),
                         HrConfig(color: Theme.of(context).focusColor),
                         H1Config(style: nBrandFontTextStyle(context: context)),
                         H2Config(

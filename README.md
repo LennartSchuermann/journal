@@ -8,7 +8,7 @@ by Lennart S. @ Nucleon Interactive
 
 Dark Mode           |  Light Mode
 :-------------------------:|:-------------------------:
-![](git/home_D.png)  |  ![](git/home_D.png)
+![](git/home_D.png)  |  ![](git/home_L.png)
 
 ### Other Features
 - *optional* Data Encryption

@@ -10,7 +10,7 @@ import 'package:journal/core/classes/encrypter.dart';
 ///     return enryptedData;
 ///   }
 ///
-///   static String encryptData(String encoded, String password) {
+///   static String decryptData(String encoded, String password) {
 ///     ...
 ///     return decodedData;
 ///   }

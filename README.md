@@ -20,9 +20,7 @@ Dark Mode           |  Light Mode
 Dark Mode           |  Light Mode
 :-------------------------:|:-------------------------:
 ![](git/start_D.png)  |  ![](git/start_L.png)
-:-------------------------:|:-------------------------:
 ![](git/entry_D.png)  |  ![](git/entry_L.png)
-:-------------------------:|:-------------------------:
 ![](git/edit_D.png)  |  ![](git/edit_L.png)
 
 ## How to use

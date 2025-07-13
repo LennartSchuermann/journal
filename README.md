@@ -26,6 +26,9 @@ Dark Mode           |  Light Mode
 To get started, simply head over to the Releases section (top right panel) and download the latest version of the binaries.
 Once downloaded, extract the ZIP file and run journal.exe. Windows may display a warning. You can safely bypass it.
 
+All your data is stored locally in the downloaded folder, under data/journal.jrnl (*or data/journal.json if encryption is disabled*).
+When updating the app, simply move your existing save file over to the new version to keep everything intact.
+
 *Disclaimer: Currently, only Windows is officially supported. However, the code for Linux and macOS is ready — it just needs to be compiled. Volunteers welcome!*
 
 ## How to modify

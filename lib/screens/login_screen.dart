@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:journal/data.dart';
 import 'package:pinput/pinput.dart';
 
 import 'package:nucleon/nucleon.dart';
@@ -86,8 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
             loginScreenController.firstAppUse
                 ? Padding(
                     padding: const EdgeInsets.only(top: kDefaultPadding),
-                    child: NCaptionFont(
-                      "Welcome to Journal!Create a Password and start your journey.",
+                    child: NContentFont(
+                      "Welcome to ${kAppData.appName}! Set a password to get started.",
                     ),
                   )
                 : const SizedBox(),

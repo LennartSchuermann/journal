@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:journal/widgets/home_blank_page.dart';
 
 import 'package:nucleon/nucleon.dart';
 
@@ -76,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               (MediaQuery.sizeOf(context).width * 2 / 3) - kWindowRadius - 1.0,
 
           child: selectedEntry == null
-              ? Center(child: NSubheadingFont("Welcome Back!"))
+              ? HomeBlankPage()
               : JournalEntryContentPage(
                   entry: selectedEntry!,
                   afterEntryRemoved: () {

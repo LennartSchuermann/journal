@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
 
 import 'package:journal/data.dart';
-import 'package:journal/core/classes/journal/journal_entry.dart';
 import 'package:journal/core/core.dart';
 import 'package:journal/core/core_manager.dart';
+import 'package:journal/core/classes/journal/journal_entry.dart';
 import 'package:journal/core/utils/date_utils.dart';
 
 class AddEntryDialog extends StatefulWidget {

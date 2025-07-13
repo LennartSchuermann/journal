@@ -85,7 +85,7 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
                     );
                   },
                 )
-              : const SizedBox(),
+              : const SizedBox(width: 40.0),
           SizedBox(width: kDefaultPadding),
           widget.providedCore.isAppLoaded &&
                   !widget.providedCore.isSettingsPanelOpen
@@ -105,8 +105,7 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
                     );
                   },
                 )
-              : const SizedBox(),
-
+              : const SizedBox(width: 40.0),
           SizedBox(width: kDefaultPadding),
           widget.providedCore.isAppLoaded
               ? Container(

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pinput/pinput.dart';
 
 import 'package:nucleon/nucleon.dart';
+import 'package:nucleon/nucleon_widgets.dart';
 
 import 'package:journal/screens/home_screen.dart';
-import 'package:journal/widgets/pin_input.dart';
 import 'package:journal/widgets/utils/j_screen.dart';
+import 'package:journal/widgets/utils/pin_code_themes.dart';
+import 'package:journal/screens/controller/login_screen_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,8 +19,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late LoginScreenController loginScreenController;
+  late PinTheme defaultPT;
+
+  @override
+  void initState() {
+    super.initState();
+    loginScreenController = LoginScreenController();
+  }
+
   @override
   Widget build(BuildContext context) {
+    defaultPT = defaultPinTheme(context);
     return JScreen(
       child: Center(
         child: Column(
@@ -33,17 +47,50 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            PinInput(
-              onComplete: (data) {
-                // go home
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeScreen(data: data),
-                  ),
-                );
+            Pinput(
+              defaultPinTheme: defaultPT,
+              focusedPinTheme: focusedPinTheme(
+                context,
+                defaultPinTheme: defaultPT,
+              ),
+              submittedPinTheme: submittedPinTheme(
+                context,
+                defaultPinTheme: defaultPT,
+              ),
+              validator: (s) => null,
+              obscureText: true,
+              pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+              showCursor: false,
+              onCompleted: (pin) async {
+                bool loadSuccessful = await loginScreenController.load(pin);
+
+                if (!loadSuccessful && context.mounted) {
+                  nShowToast(
+                    context,
+                    title: "Incorrect Pin Code",
+                    description: "",
+                    type: ToastType.error,
+                    widthOverride:
+                        MediaQuery.sizeOf(context).width / 4.0 -
+                        4.0 * kDefaultPadding,
+                  );
+                } else if (loadSuccessful && context.mounted) {
+                  // go home
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                }
               },
             ),
+            loginScreenController.firstAppUse
+                ? Padding(
+                    padding: const EdgeInsets.only(top: kDefaultPadding),
+                    child: NCaptionFont(
+                      "Welcome to Journal!Create a Password and start your journey.",
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ),
       ),

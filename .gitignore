@@ -46,3 +46,7 @@ app.*.map.json
 
 # No Encryption Leaks
 lib/core/classes/encrypter.dart
+
+# No Test Data
+data/journal.jrnl
+data/journal.json

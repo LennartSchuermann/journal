@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+
 import 'package:journal/core/services/encryption_service.dart';
 
 class DataService {
@@ -112,10 +113,11 @@ class DataService {
   // Using Encryption
   static Future<void> _appendEncryptedJson(
     Uint8List encryptedData, {
+    // use FileMode.write to override existing file
     FileMode mode = FileMode.append,
   }) async {
     final file = File(encryptedFilePath);
-    final raf = await file.open(mode: mode); // append mode
+    final raf = await file.open(mode: mode);
 
     final lengthBytes = ByteData(4)..setUint32(0, encryptedData.lengthInBytes);
     await raf.writeFrom(lengthBytes.buffer.asUint8List());

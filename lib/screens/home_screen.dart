@@ -7,7 +7,6 @@ import 'package:nucleon/nucleon.dart';
 import 'package:journal/data.dart';
 import 'package:journal/core/core.dart';
 import 'package:journal/core/core_manager.dart';
-import 'package:journal/core/classes/app_data.dart';
 import 'package:journal/widgets/journal_entry_card.dart';
 import 'package:journal/widgets/utils/j_screen.dart';
 import 'package:journal/widgets/dialog/add_entry_dialog.dart';
@@ -15,9 +14,7 @@ import 'package:journal/widgets/journal_entry_content_page.dart';
 import 'package:journal/core/classes/journal/journal_entry.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.data});
-
-  final AppData data;
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

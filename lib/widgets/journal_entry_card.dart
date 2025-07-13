@@ -36,6 +36,7 @@ class _JournalEntryState extends State<JournalEntryCard> {
           cardColor: !widget.selected ? Colors.transparent : null,
           onPressed: widget.onTap,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               NTitleFont(
                 getFormattedDate(widget.journalEntry.dateTime.toLocal()),

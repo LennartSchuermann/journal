@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:markdown_widget/markdown_widget.dart';
@@ -282,7 +283,17 @@ class _JournalEntryContentPageState extends State<JournalEntryContentPage> {
 
     return Padding(
       padding: const EdgeInsets.only(left: kDefaultPadding),
-      child: Stack(children: [journalContent(), toolBar()]),
+      child: Stack(
+        children: [
+          journalContent(),
+          toolBar().animate().fadeIn(
+            delay: Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 200),
+            curve: Curves.fastEaseInToSlowEaseOut,
+          ),
+          //.slideY(curve: Curves.fastEaseInToSlowEaseOut),
+        ],
+      ),
     );
   }
 }

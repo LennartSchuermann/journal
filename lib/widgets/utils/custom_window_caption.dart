@@ -66,16 +66,24 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
             ),
           ),
           widget.providedCore.isAppLoaded &&
-                  widget.providedCore.hasUnsavedChanges
+                  widget.providedCore.hasUnsavedChanges &&
+                  !widget.providedCore.isSaving
               ? NIconCircle(
                   iconData: FeatherIcons.save,
                   invertColors: true,
-                  onPressed: () => nShowDialog(
-                    barrierDismissible: false,
-                    context: navigatorKey.currentContext!,
-                    dialog: SavingDialog(providedCore: widget.providedCore),
-                    after: () => widget.providedCore.updateApp(),
-                  ),
+                  onPressed: () {
+                    widget.providedCore.isSaving = true;
+                    widget.providedCore.updateApp();
+                    nShowDialog(
+                      barrierDismissible: false,
+                      context: navigatorKey.currentContext!,
+                      dialog: SavingDialog(providedCore: widget.providedCore),
+                      after: () {
+                        widget.providedCore.isSaving = false;
+                        widget.providedCore.updateApp();
+                      },
+                    );
+                  },
                 )
               : const SizedBox(),
           SizedBox(width: kDefaultPadding),

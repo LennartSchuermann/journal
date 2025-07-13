@@ -4,8 +4,6 @@ A small Journal Desktop-App, written in Dart using Flutter.
 
 by Lennart S. @ Nucleon Interactive
 
-## Journal
-
 Dark Mode           |  Light Mode
 :-------------------------:|:-------------------------:
 ![](git/home_D.png)  |  ![](git/home_L.png)

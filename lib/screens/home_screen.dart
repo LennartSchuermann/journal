@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getEntries() {
-    entries = _core.journalService.journaltrack.journalEntryList;
+    entries = _core.journalService.journalEntryList;
   }
 
   Widget journalEntriesSection() {

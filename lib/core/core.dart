@@ -19,6 +19,7 @@ class Core extends ChangeNotifier {
   late GitService gitService;
 
   // states
+  // // TODO move to wrapper class...
   bool isAppLoaded = false;
   bool isSettingsPanelOpen = false;
   bool isSaving = false;

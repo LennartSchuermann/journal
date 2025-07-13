@@ -54,7 +54,7 @@ class _JournalEntryContentPageState extends State<JournalEntryContentPage> {
 
   void resetPage() {
     currentEntry =
-        core.journalService.journaltrack.getEntry(widget.entry.dateTime) ??
+        core.journalService.getEntry(entryDate: widget.entry.dateTime) ??
         widget.entry;
 
     if (!inEditMode) return;
@@ -69,7 +69,7 @@ class _JournalEntryContentPageState extends State<JournalEntryContentPage> {
       entry: currentEntry,
       contentOverride: textEditingController.text,
     );
-    core.journalService.journaltrack.updateTrackEntry(updatedEntry);
+    core.journalService.updateEntry(entryToUpdate: updatedEntry);
 
     bool hasChanges =
         (currentEntry.journalContent != updatedEntry.journalContent);
@@ -79,7 +79,7 @@ class _JournalEntryContentPageState extends State<JournalEntryContentPage> {
   }
 
   bool deleteEntry() {
-    return core.journalService.journaltrack.removeEntry(currentEntry.dateTime);
+    return core.journalService.removeEntry(removeAtDate: currentEntry.dateTime);
   }
 
   Widget toolBar() {

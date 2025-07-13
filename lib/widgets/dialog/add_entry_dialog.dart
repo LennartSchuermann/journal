@@ -34,9 +34,7 @@ class _AddEntryDialogState extends State<AddEntryDialog> {
   }
 
   bool doesEntryExist() {
-    return core.journalService.journaltrack.containsEntry(
-      dateOnly(newEntryDate),
-    );
+    return core.journalService.containsEntry(entryDate: dateOnly(newEntryDate));
   }
 
   void addEntry() {

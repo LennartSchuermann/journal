@@ -1,4 +1,5 @@
 import 'dart:collection';
+
 import 'package:collection/collection.dart';
 
 import 'package:journal/core/classes/journal/journal_entry.dart';

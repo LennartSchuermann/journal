@@ -79,15 +79,23 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
                 )
               : const SizedBox(),
           SizedBox(width: kDefaultPadding),
-          widget.providedCore.isAppLoaded
+          widget.providedCore.isAppLoaded &&
+                  !widget.providedCore.isSettingsPanelOpen
               ? NIconCircle(
                   iconData: FeatherIcons.settings,
                   invertColors: true,
-                  onPressed: () => nShowDialog(
-                    context: navigatorKey.currentContext!,
-                    dialog: SettingsDialog(),
-                    after: () {},
-                  ),
+                  onPressed: () {
+                    widget.providedCore.isSettingsPanelOpen = true;
+                    widget.providedCore.updateApp();
+                    nShowDialog(
+                      context: navigatorKey.currentContext!,
+                      dialog: SettingsDialog(),
+                      after: () {
+                        widget.providedCore.isSettingsPanelOpen = false;
+                        widget.providedCore.updateApp();
+                      },
+                    );
+                  },
                 )
               : const SizedBox(),
 

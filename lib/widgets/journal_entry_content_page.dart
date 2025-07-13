@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:journal/core/core.dart';
-import 'package:journal/core/core_manager.dart';
-import 'package:journal/widgets/dialog/deletion_dialog.dart';
-import 'package:journal/widgets/utils/markdown_math.dart';
-import 'package:markdown_widget/config/configs.dart';
 import 'package:markdown_widget/markdown_widget.dart';
-import 'package:markdown_widget/widget/markdown.dart';
 
 import 'package:nucleon/nucleon.dart';
-
-import 'package:journal/core/classes/journal/journal_entry.dart';
 import 'package:nucleon/nucleon_widgets.dart';
+
+import 'package:journal/core/core.dart';
+import 'package:journal/core/core_manager.dart';
+import 'package:journal/core/classes/journal/journal_entry.dart';
+import 'package:journal/widgets/dialog/deletion_dialog.dart';
+import 'package:journal/widgets/utils/markdown_math.dart';
 
 class JournalEntryContentPage extends StatefulWidget {
   const JournalEntryContentPage({

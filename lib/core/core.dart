@@ -20,6 +20,7 @@ class Core extends ChangeNotifier {
 
   // states
   bool isAppLoaded = false;
+  bool isSettingsPanelOpen = false;
   bool _unsavedChanges = false;
 
   bool get hasUnsavedChanges => _unsavedChanges;

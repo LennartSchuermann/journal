@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:journal/data.dart';
 import 'package:pinput/pinput.dart';
 
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
 
+import 'package:journal/data.dart';
 import 'package:journal/screens/home_screen.dart';
 import 'package:journal/widgets/utils/j_screen.dart';
 import 'package:journal/widgets/utils/pin_code_themes.dart';

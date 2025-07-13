@@ -1,6 +1,6 @@
-import 'package:journal/core/classes/app_data.dart';
 import 'package:journal/core/core.dart';
 import 'package:journal/core/core_manager.dart';
+import 'package:journal/core/classes/app_data.dart';
 import 'package:journal/core/services/data_service.dart';
 
 class LoginScreenController {

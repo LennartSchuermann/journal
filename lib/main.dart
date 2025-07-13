@@ -26,6 +26,7 @@ void main() async {
 
   WindowOptions windowOptions = WindowOptions(
     size: Size(1280, 832),
+    maximumSize: Size(1280, 832),
     center: true,
     backgroundColor: Colors.transparent,
     skipTaskbar: false,
@@ -39,7 +40,8 @@ void main() async {
     await windowManager.setMinimizable(false);
     await windowManager.setAsFrameless();
     await windowManager.setHasShadow(false);
-    windowManager.show();
+    await windowManager.show();
+    await windowManager.focus();
   });
 
   // Nucleon
@@ -60,7 +62,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '${kAppData.appName} by Nucleon',
+      title: '${kAppData.appName} $byDev',
       theme: nLightTheme,
       darkTheme: nDarkTheme,
       navigatorKey: navigatorKey,
@@ -96,7 +98,7 @@ class MyApp extends StatelessWidget {
                       NTitleFont(kAppData.appName),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: NCaptionFont("by Nucleon"),
+                        child: NCaptionFont(byDev),
                       ),
                     ],
                   ),

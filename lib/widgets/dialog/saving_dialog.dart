@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:journal/core/core.dart';
+
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
+
+import 'package:journal/core/core.dart';
 
 class SavingDialog extends StatefulWidget {
   const SavingDialog({super.key, required this.providedCore});

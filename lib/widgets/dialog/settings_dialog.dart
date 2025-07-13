@@ -22,9 +22,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
   late Core core;
 
   late TextEditingController pinController;
-
-  // TODO disable settings button, when pop up is open....
-  // Bug: multiple panels can be open above each other - NOT GOOD
+  late PinTheme defaultPT;
 
   @override
   void initState() {
@@ -36,7 +34,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
 
   @override
   Widget build(BuildContext context) {
-    PinTheme defaultPT = defaultPinTheme(
+    defaultPT = defaultPinTheme(
       context,
       invert: true,
       size: 32.0,

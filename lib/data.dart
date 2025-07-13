@@ -10,4 +10,6 @@ NAppData kAppData = NAppData(
   year: "2026",
 );
 
+const String byDev = "by Nucleon";
+
 final DateTime kMinDateTime = DateTime(2000);

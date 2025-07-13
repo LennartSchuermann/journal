@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+
 import 'package:nucleon/nucleon.dart';
 
 class HomeBlankPage extends StatelessWidget {

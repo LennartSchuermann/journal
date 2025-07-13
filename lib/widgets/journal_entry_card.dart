@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:journal/core/classes/journal/journal_entry.dart';
+
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
+
+import 'package:journal/core/classes/journal/journal_entry.dart';
 
 class JournalEntryCard extends StatefulWidget {
   const JournalEntryCard({

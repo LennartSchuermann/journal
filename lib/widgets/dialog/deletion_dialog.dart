@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:journal/core/classes/journal/journal_entry.dart';
+
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
+
+import 'package:journal/core/classes/journal/journal_entry.dart';
 
 class DeletionDialog extends StatefulWidget {
   const DeletionDialog({super.key, required this.entry, required this.delete});

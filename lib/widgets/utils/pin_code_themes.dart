@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nucleon/nucleon.dart';
+
 import 'package:pinput/pinput.dart';
+
+import 'package:nucleon/nucleon.dart';
 
 PinTheme defaultPinTheme(
   BuildContext context, {

@@ -12,8 +12,18 @@ Dark Mode           |  Light Mode
 
 ### Other Features
 - *optional* Data Encryption
-- Markdown Syntax (also Math)
+- Markdown Syntax & Emojis (*also Math*)
 - Dark & Light Mode
+
+### More Screenshots
+
+Dark Mode           |  Light Mode
+:-------------------------:|:-------------------------:
+![](git/start_D.png)  |  ![](git/start_L.png)
+:-------------------------:|:-------------------------:
+![](git/entry_D.png)  |  ![](git/entry_L.png)
+:-------------------------:|:-------------------------:
+![](git/edit_D.png)  |  ![](git/edit_L.png)
 
 ## How to use
 

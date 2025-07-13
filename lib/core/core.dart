@@ -19,11 +19,13 @@ class Core extends ChangeNotifier {
   late GitService gitService;
 
   // states
-  // // TODO move to wrapper class...
+  // TODO move to wrapper class...
   bool isAppLoaded = false;
   bool isSettingsPanelOpen = false;
   bool isSaving = false;
   bool _unsavedChanges = false;
+
+  // TODO Check version & updates
 
   bool get hasUnsavedChanges => _unsavedChanges;
   void setUnsavedChanges() {

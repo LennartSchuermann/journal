@@ -12,7 +12,7 @@ const double kWindowRadius = 40.0;
 
 NAppData kAppData = NAppData(
   appName: "Journal",
-  appVersion: "v0.0.1",
+  appVersion: "v0.0.2",
   developer: "NucleonInteractive",
   developerMail: "nucleoninteractive@gmail.com",
   year: "2026",

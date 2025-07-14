@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:journal/core/core.dart';
-import 'package:journal/core/core_manager.dart';
-import 'package:journal/widgets/utils/pin_code_themes.dart';
-import 'package:pinput/pinput.dart';
 
-import 'package:tuple/tuple.dart';
+import 'package:pinput/pinput.dart';
 
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
 
 import 'package:journal/data.dart';
+import 'package:journal/core/core.dart';
+import 'package:journal/core/core_manager.dart';
+import 'package:journal/widgets/utils/pin_code_themes.dart';
 
 class SettingsDialog extends StatefulWidget {
   const SettingsDialog({super.key});
@@ -53,6 +52,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
       size: 32.0,
       borderRadius: 5.0,
     );
+
     return NPopUpDialog(
       title: "Settings",
       invert: true,
@@ -117,10 +117,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
                       core.setUnsavedChanges();
                       core.appData.useEncryption = newVal;
                     }),
-                    colors: Tuple2(
-                      NColorPalette.mintLeaf.getColor(),
-                      NColorPalette.electonBlue.getColor(),
-                    ),
+                    colors: kPrimaryColors,
                   ),
                 ],
               ),

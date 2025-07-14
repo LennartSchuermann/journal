@@ -29,6 +29,26 @@ class _LoginScreenState extends State<LoginScreen> {
     loginScreenController = LoginScreenController();
   }
 
+  Future login(String pin) async {
+    bool loadSuccessful = await loginScreenController.load(pin);
+
+    if (!loadSuccessful && mounted) {
+      nShowToast(
+        context,
+        title: "Incorrect Pin Code",
+        description: "",
+        type: ToastType.error,
+        widthOverride: getToastWidth(context),
+      );
+    } else if (loadSuccessful && mounted) {
+      // go home
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     defaultPT = defaultPinTheme(context);
@@ -62,25 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
               obscureText: true,
               pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
               showCursor: false,
-              onCompleted: (pin) async {
-                bool loadSuccessful = await loginScreenController.load(pin);
-
-                if (!loadSuccessful && context.mounted) {
-                  nShowToast(
-                    context,
-                    title: "Incorrect Pin Code",
-                    description: "",
-                    type: ToastType.error,
-                    widthOverride: getToastWidth(context),
-                  );
-                } else if (loadSuccessful && context.mounted) {
-                  // go home
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                }
-              },
+              onCompleted: (pin) async => await login(pin),
             ),
             loginScreenController.firstAppUse
                 ? Padding(

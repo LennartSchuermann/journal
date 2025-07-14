@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
 import 'package:nucleon/nucleon.dart';
+import 'package:tuple/tuple.dart';
 
 // currently only used for the SettingsDialog() inside of the custom window builder
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -23,6 +24,11 @@ final DateTime kMinDateTime = DateTime(2000);
 
 double getToastWidth(BuildContext context) =>
     MediaQuery.sizeOf(context).width / 4.0;
+
+final Tuple2<Color, Color> kPrimaryColors = Tuple2<Color, Color>(
+  NColorPalette.mintLeaf.getColor(), // Light Mode
+  NColorPalette.electonBlue.getColor(), // Dark Mode
+);
 
 MarkdownConfig markdownConfig({
   required BuildContext context,

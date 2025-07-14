@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:journal/core/classes/journal/journal_entry.dart';
-import 'package:journal/core/core.dart';
-import 'package:journal/core/core_manager.dart';
-import 'package:journal/data.dart';
-import 'package:journal/widgets/dialog/deletion_dialog.dart';
+
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
+
+import 'package:journal/data.dart';
+import 'package:journal/core/core.dart';
+import 'package:journal/core/core_manager.dart';
+import 'package:journal/core/classes/journal/journal_entry.dart';
+import 'package:journal/widgets/dialog/deletion_dialog.dart';
 
 class JournalContentPageController {
   late Core _core;

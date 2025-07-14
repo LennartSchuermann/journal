@@ -10,6 +10,7 @@ import 'package:journal/core/services/journal_service.dart';
 class Core extends ChangeNotifier {
   // Loadable Objects
   late AppData _data;
+  late AppState state;
 
   // Tracks
   late Journaltrack _journaltrack;
@@ -19,11 +20,9 @@ class Core extends ChangeNotifier {
   late DataService dataService;
   late GitService gitService;
 
-  // states
-  late AppState state;
-
   // TODO Check version & updates
 
+  // saving State Logic
   bool get hasUnsavedChanges => state.unsavedChanges;
   void setUnsavedChanges() {
     state.unsavedChanges = true;

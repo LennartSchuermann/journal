@@ -31,6 +31,9 @@ When updating the app, simply move your existing save file over to the new versi
 
 *Disclaimer: Currently, only Windows is officially supported. However, the code for Linux and macOS is ready — it just needs to be compiled. Volunteers welcome!*
 
+### Known Bugs
+- Markdown Stuff (Todo-List doesn't work / crashes App, No Table Config yet, ...)
+
 ## How to modify
 
 To modify and compile the application yourself, you’ll need access to my custom design library, **NucleonDesign** (*which may be open-sourced in the future*).

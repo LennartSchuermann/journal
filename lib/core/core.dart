@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:journal/core/classes/app_data.dart';
+import 'package:journal/core/classes/app_state.dart';
 import 'package:journal/core/classes/journal/journal_track.dart';
 import 'package:journal/core/services/data_service.dart';
 import 'package:journal/core/services/git_service.dart';
@@ -19,21 +20,21 @@ class Core extends ChangeNotifier {
   late GitService gitService;
 
   // states
-  // TODO move to wrapper class...
-  bool isAppLoaded = false;
-  bool isSettingsPanelOpen = false;
-  bool isSaving = false;
-  bool _unsavedChanges = false;
+  late AppState state;
 
   // TODO Check version & updates
 
-  bool get hasUnsavedChanges => _unsavedChanges;
+  bool get hasUnsavedChanges => state.unsavedChanges;
   void setUnsavedChanges() {
-    _unsavedChanges = true;
+    state.unsavedChanges = true;
     updateApp();
   }
 
   AppData get appData => _data;
+
+  Core() {
+    state = AppState();
+  }
 
   Future<AppData?> loadData(String password) async {
     bool usingEncryption = DataService.usingEncryption();
@@ -61,7 +62,7 @@ class Core extends ChangeNotifier {
   }
 
   Future<bool> saveData() async {
-    _unsavedChanges = false;
+    state.unsavedChanges = false;
 
     debugPrint("<J-CORE> Saving Data...");
 
@@ -78,7 +79,7 @@ class Core extends ChangeNotifier {
     debugPrint("<J-CORE> Log-In User...");
     _data.login();
 
-    isAppLoaded = true;
+    state.isAppLoaded = true;
 
     _setupServices();
     updateApp();

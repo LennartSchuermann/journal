@@ -29,44 +29,44 @@ class CustomWindowCaption extends StatefulWidget {
 class _CustomWindowCaptionState extends State<CustomWindowCaption>
     with WindowListener {
   bool get showSaveButton =>
-      widget.providedCore.isAppLoaded &&
+      widget.providedCore.state.isAppLoaded &&
       widget.providedCore.hasUnsavedChanges &&
-      !widget.providedCore.isSaving;
+      !widget.providedCore.state.isSaving;
 
   bool get showSettingsButton =>
-      widget.providedCore.isAppLoaded &&
-      !widget.providedCore.isSettingsPanelOpen &&
-      !widget.providedCore.isSaving;
+      widget.providedCore.state.isAppLoaded &&
+      !widget.providedCore.state.isSettingsPanelOpen &&
+      !widget.providedCore.state.isSaving;
 
   void openSettingsPanel() {
-    widget.providedCore.isSettingsPanelOpen = true;
+    widget.providedCore.state.isSettingsPanelOpen = true;
     widget.providedCore.updateApp();
     nShowDialog(
       context: navigatorKey.currentContext!,
       dialog: SettingsDialog(),
       after: () {
-        widget.providedCore.isSettingsPanelOpen = false;
+        widget.providedCore.state.isSettingsPanelOpen = false;
         widget.providedCore.updateApp();
       },
     );
   }
 
   void save() {
-    widget.providedCore.isSaving = true;
+    widget.providedCore.state.isSaving = true;
     widget.providedCore.updateApp();
     nShowDialog(
       barrierDismissible: false,
       context: navigatorKey.currentContext!,
       dialog: SavingDialog(providedCore: widget.providedCore),
       after: () {
-        widget.providedCore.isSaving = false;
+        widget.providedCore.state.isSaving = false;
         widget.providedCore.updateApp();
       },
     );
   }
 
   void closeApp() {
-    if (widget.providedCore.isSaving) return;
+    if (widget.providedCore.state.isSaving) return;
     if (!widget.providedCore.hasUnsavedChanges) {
       windowManager.close();
     }
@@ -145,7 +145,7 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
                 )
               : const SizedBox(width: 40.0),
           SizedBox(width: kDefaultPadding),
-          widget.providedCore.isAppLoaded
+          widget.providedCore.state.isAppLoaded
               ? Container(
                   width: 1.0,
                   height: kDefaultPadding,

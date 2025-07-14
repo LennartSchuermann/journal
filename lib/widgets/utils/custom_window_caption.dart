@@ -6,7 +6,6 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:nucleon/nucleon.dart';
 import 'package:nucleon/nucleon_widgets.dart';
 
-import 'package:journal/main.dart';
 import 'package:journal/data.dart';
 import 'package:journal/core/core.dart';
 import 'package:journal/widgets/dialog/closing_dialog.dart';

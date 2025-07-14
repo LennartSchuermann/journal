@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nucleon/nucleon.dart';
 
+// currently only used for the SettingsDialog() inside of the custom window builder
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 const double kWindowRadius = 40.0;
 
 NAppData kAppData = NAppData(

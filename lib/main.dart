@@ -12,9 +12,6 @@ import 'package:journal/core/core_manager.dart';
 import 'package:journal/screens/login_screen.dart';
 import 'package:journal/widgets/utils/custom_window_caption.dart';
 
-// currently only used for the SettingsDialog() inside of the custom window builder
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   windowManager.ensureInitialized();
@@ -68,7 +65,8 @@ class MyApp extends StatelessWidget {
       // Custom Windows Nav Bar
       color: Colors.transparent,
       builder: (context, child) {
-        final providedCore = Provider.of<Core>(context); // Listens to changes!
+        // Listens to changes!
+        final providedCore = Provider.of<Core>(context);
 
         return ClipRRect(
           borderRadius: BorderRadius.circular(kWindowRadius),

@@ -10,7 +10,7 @@ Dark Mode           |  Light Mode
 
 ### Other Features
 - *optional* Data Encryption
-- Markdown Syntax & Emojis (*also Math*)
+- Markdown Syntax (*also Math*) & Emojis
 - Dark & Light Mode
 
 ### More Screenshots

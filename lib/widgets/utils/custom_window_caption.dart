@@ -8,20 +8,19 @@ import 'package:nucleon/nucleon_widgets.dart';
 
 import 'package:journal/main.dart';
 import 'package:journal/data.dart';
-
+import 'package:journal/core/core.dart';
 import 'package:journal/widgets/dialog/closing_dialog.dart';
 import 'package:journal/widgets/dialog/saving_dialog.dart';
 import 'package:journal/widgets/dialog/settings_dialog.dart';
-import 'package:journal/core/core.dart';
 
 class CustomWindowCaption extends StatefulWidget {
   const CustomWindowCaption({
     super.key,
-    this.title,
+    required this.title,
     required this.providedCore,
   });
 
-  final Widget? title;
+  final Widget title;
   final Core providedCore;
 
   @override
@@ -30,6 +29,64 @@ class CustomWindowCaption extends StatefulWidget {
 
 class _CustomWindowCaptionState extends State<CustomWindowCaption>
     with WindowListener {
+  bool get showSaveButton =>
+      widget.providedCore.isAppLoaded &&
+      widget.providedCore.hasUnsavedChanges &&
+      !widget.providedCore.isSaving;
+
+  bool get showSettingsButton =>
+      widget.providedCore.isAppLoaded &&
+      !widget.providedCore.isSettingsPanelOpen;
+
+  void openSettingsPanel() {
+    widget.providedCore.isSettingsPanelOpen = true;
+    widget.providedCore.updateApp();
+    nShowDialog(
+      context: navigatorKey.currentContext!,
+      dialog: SettingsDialog(),
+      after: () {
+        widget.providedCore.isSettingsPanelOpen = false;
+        widget.providedCore.updateApp();
+      },
+    );
+  }
+
+  void save() {
+    widget.providedCore.isSaving = true;
+    widget.providedCore.updateApp();
+    nShowDialog(
+      barrierDismissible: false,
+      context: navigatorKey.currentContext!,
+      dialog: SavingDialog(providedCore: widget.providedCore),
+      after: () {
+        widget.providedCore.isSaving = false;
+        widget.providedCore.updateApp();
+      },
+    );
+  }
+
+  void closeApp() {
+    if (!widget.providedCore.hasUnsavedChanges) windowManager.close();
+    nShowDialog(
+      context: navigatorKey.currentContext!,
+      dialog: ClosingDialog(
+        closeApp: (close) {
+          if (close) windowManager.close();
+        },
+      ),
+      after: () {},
+    );
+  }
+
+  Future minimizeApp() async {
+    bool isMinimized = await windowManager.isMinimized();
+    if (isMinimized) {
+      windowManager.restore();
+    } else {
+      windowManager.minimize();
+    }
+  }
+
   @override
   void initState() {
     windowManager.addListener(this);
@@ -61,7 +118,7 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
                           invert: false,
                           desktopFS: true,
                         ),
-                        child: widget.title ?? Container(),
+                        child: widget.title,
                       ),
                     ),
                   ],
@@ -69,45 +126,19 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
               ),
             ),
           ),
-          widget.providedCore.isAppLoaded &&
-                  widget.providedCore.hasUnsavedChanges &&
-                  !widget.providedCore.isSaving
+          showSaveButton
               ? NIconCircle(
                   iconData: FeatherIcons.save,
                   invertColors: true,
-                  onPressed: () {
-                    widget.providedCore.isSaving = true;
-                    widget.providedCore.updateApp();
-                    nShowDialog(
-                      barrierDismissible: false,
-                      context: navigatorKey.currentContext!,
-                      dialog: SavingDialog(providedCore: widget.providedCore),
-                      after: () {
-                        widget.providedCore.isSaving = false;
-                        widget.providedCore.updateApp();
-                      },
-                    );
-                  },
+                  onPressed: () => save(),
                 )
               : const SizedBox(width: 40.0),
           SizedBox(width: kDefaultPadding),
-          widget.providedCore.isAppLoaded &&
-                  !widget.providedCore.isSettingsPanelOpen
+          showSettingsButton
               ? NIconCircle(
                   iconData: FeatherIcons.settings,
                   invertColors: true,
-                  onPressed: () {
-                    widget.providedCore.isSettingsPanelOpen = true;
-                    widget.providedCore.updateApp();
-                    nShowDialog(
-                      context: navigatorKey.currentContext!,
-                      dialog: SettingsDialog(),
-                      after: () {
-                        widget.providedCore.isSettingsPanelOpen = false;
-                        widget.providedCore.updateApp();
-                      },
-                    );
-                  },
+                  onPressed: () => openSettingsPanel(),
                 )
               : const SizedBox(width: 40.0),
           SizedBox(width: kDefaultPadding),
@@ -122,32 +153,13 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
           NIconCircle(
             iconData: FeatherIcons.minimize2,
             invertColors: true,
-            onPressed: () async {
-              bool isMinimized = await windowManager.isMinimized();
-              if (isMinimized) {
-                windowManager.restore();
-              } else {
-                windowManager.minimize();
-              }
-            },
+            onPressed: () async => await minimizeApp(),
           ),
-
           SizedBox(width: kDefaultPadding),
           NIconCircle(
             iconData: FeatherIcons.x,
             invertColors: true,
-            onPressed: () {
-              if (!widget.providedCore.hasUnsavedChanges) windowManager.close();
-              nShowDialog(
-                context: navigatorKey.currentContext!,
-                dialog: ClosingDialog(
-                  closeApp: (close) {
-                    if (close) windowManager.close();
-                  },
-                ),
-                after: () {},
-              );
-            },
+            onPressed: () => closeApp(),
           ),
           SizedBox(width: kWindowRadius),
         ],

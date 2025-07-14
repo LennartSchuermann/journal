@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:journal/data.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
 import 'package:nucleon/nucleon.dart';
@@ -239,8 +240,7 @@ class _JournalEntryContentPageState extends State<JournalEntryContentPage> {
                                 title: "Copied Link to Clipboard",
                                 description: "",
                                 type: ToastType.alert,
-                                widthOverride:
-                                    MediaQuery.sizeOf(context).width / 4.0,
+                                widthOverride: getToastWidth(context),
                               );
                             }
                           },

@@ -24,6 +24,19 @@ class _SettingsDialogState extends State<SettingsDialog> {
   late TextEditingController pinController;
   late PinTheme defaultPT;
 
+  void changePassword(String pin) {
+    core.appData.password = pin;
+    core.setUnsavedChanges();
+    nShowToast(
+      context,
+      title: "Password Changed!",
+      description: "",
+      type: ToastType.success,
+      widthOverride: getToastWidth(context),
+    );
+    pinController.clear();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -88,18 +101,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
                     validator: (s) => null,
                     pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                     showCursor: false,
-                    onCompleted: (pin) {
-                      core.appData.password = pin;
-                      core.setUnsavedChanges();
-                      nShowToast(
-                        context,
-                        title: "Password Changed!",
-                        description: "",
-                        type: ToastType.success,
-                        widthOverride: MediaQuery.sizeOf(context).width / 4,
-                      );
-                      pinController.clear();
-                    },
+                    onCompleted: (pin) => changePassword(pin),
                   ),
                 ],
               ),

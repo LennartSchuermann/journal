@@ -36,7 +36,8 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
 
   bool get showSettingsButton =>
       widget.providedCore.isAppLoaded &&
-      !widget.providedCore.isSettingsPanelOpen;
+      !widget.providedCore.isSettingsPanelOpen &&
+      !widget.providedCore.isSaving;
 
   void openSettingsPanel() {
     widget.providedCore.isSettingsPanelOpen = true;
@@ -66,7 +67,10 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
   }
 
   void closeApp() {
-    if (!widget.providedCore.hasUnsavedChanges) windowManager.close();
+    if (widget.providedCore.isSaving) return;
+    if (!widget.providedCore.hasUnsavedChanges) {
+      windowManager.close();
+    }
     nShowDialog(
       context: navigatorKey.currentContext!,
       dialog: ClosingDialog(

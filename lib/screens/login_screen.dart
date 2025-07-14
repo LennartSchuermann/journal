@@ -71,9 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     title: "Incorrect Pin Code",
                     description: "",
                     type: ToastType.error,
-                    widthOverride:
-                        MediaQuery.sizeOf(context).width / 4.0 -
-                        4.0 * kDefaultPadding,
+                    widthOverride: getToastWidth(context),
                   );
                 } else if (loadSuccessful && context.mounted) {
                   // go home

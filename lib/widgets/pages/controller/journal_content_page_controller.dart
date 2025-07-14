@@ -21,6 +21,8 @@ class JournalContentPageController {
 
   JournalEntry get currentEntry => _currentEntry;
 
+  // TODO disable edit mode on entry change
+
   JournalContentPageController({required JournalEntry entry}) {
     _core = CoreManager.instance.core;
 
@@ -34,9 +36,9 @@ class JournalContentPageController {
     textEditingController.dispose();
   }
 
-  void resetPage() {
+  void resetPage({required JournalEntry prevEntry}) {
     _currentEntry =
-        _core.journalService.getEntry(entryDate: _entry.dateTime) ?? _entry;
+        _core.journalService.getEntry(entryDate: prevEntry.dateTime) ?? _entry;
 
     if (!inEditMode) return;
 

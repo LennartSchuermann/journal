@@ -42,13 +42,12 @@ class _JournalEntryContentPageState extends State<JournalEntryContentPage> {
   }
 
   void resetPage() {
-    pageController.resetPage();
+    pageController.resetPage(prevEntry: widget.entry);
     setState(() {});
   }
 
   Future editMode() async {
-    await pageController.editMode();
-    setState(() {});
+    await pageController.editMode().then((val) => setState(() {}));
   }
 
   Widget toolBar() {

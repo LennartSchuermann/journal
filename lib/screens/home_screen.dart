@@ -11,9 +11,9 @@ import 'package:journal/core/core_manager.dart';
 import 'package:journal/core/classes/journal/journal_entry.dart';
 import 'package:journal/widgets/journal_entry_card.dart';
 import 'package:journal/widgets/utils/j_screen.dart';
-import 'package:journal/widgets/home_blank_page.dart';
+import 'package:journal/widgets/pages/home_blank_page.dart';
 import 'package:journal/widgets/dialog/add_entry_dialog.dart';
-import 'package:journal/widgets/journal_entry_content_page.dart';
+import 'package:journal/widgets/pages/journal_entry_content_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -69,6 +69,7 @@ class _CustomWindowCaptionState extends State<CustomWindowCaption>
     if (widget.providedCore.state.isSaving) return;
     if (!widget.providedCore.hasUnsavedChanges) {
       windowManager.close();
+      return;
     }
     nShowDialog(
       context: navigatorKey.currentContext!,

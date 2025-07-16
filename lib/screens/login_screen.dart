@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
@@ -68,30 +69,38 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            Pinput(
-              defaultPinTheme: defaultPT,
-              focusedPinTheme: focusedPinTheme(
-                context,
-                defaultPinTheme: defaultPT,
-              ),
-              submittedPinTheme: submittedPinTheme(
-                context,
-                defaultPinTheme: defaultPT,
-              ),
-              validator: (s) => null,
-              obscureText: true,
-              pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-              showCursor: false,
-              onCompleted: (pin) async => await login(pin),
+            Column(
+              children: [
+                Pinput(
+                  defaultPinTheme: defaultPT,
+                  focusedPinTheme: focusedPinTheme(
+                    context,
+                    defaultPinTheme: defaultPT,
+                  ),
+                  submittedPinTheme: submittedPinTheme(
+                    context,
+                    defaultPinTheme: defaultPT,
+                  ),
+                  validator: (s) => null,
+                  obscureText: true,
+                  pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                  showCursor: false,
+                  onCompleted: (pin) async => await login(pin),
+                ),
+                loginScreenController.firstAppUse
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: kDefaultPadding),
+                        child: NContentFont(
+                          "Welcome to ${kAppData.appName}! Set a password to get started.",
+                        ),
+                      )
+                    : const SizedBox(),
+              ],
+            ).animate().fade(
+              delay: Duration(milliseconds: 800),
+              duration: Duration(milliseconds: 500),
+              curve: Curves.fastEaseInToSlowEaseOut,
             ),
-            loginScreenController.firstAppUse
-                ? Padding(
-                    padding: const EdgeInsets.only(top: kDefaultPadding),
-                    child: NContentFont(
-                      "Welcome to ${kAppData.appName}! Set a password to get started.",
-                    ),
-                  )
-                : const SizedBox(),
           ],
         ),
       ),
